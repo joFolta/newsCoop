@@ -1,0 +1,30 @@
+body{
+  background-color: #f5f5f5;
+  padding-top:80px;
+  word-wrap:break-word;
+}
+img{
+  height: 200px;
+}
+#top{
+  background-color: #f5f5f5;
+  /* background-color: lightblue; */
+}
+#background{
+  border: 1px solid orange;
+  background-color: orange;
+}
+#gray{
+  background-color: #f5f5f5;
+  width: 48.6%;
+}
+#logoSec{
+  height: 382px;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+#logoSec img{
+  margin-top: 20px;
+  height: 350px;
+  width: 100%;
+}
