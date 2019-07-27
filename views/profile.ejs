@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <title>NewsCoop</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="background"class="container">
+
+    <div id="top" class="page-header text-center">
+        <h1> <span class="fas fa-newspaper"></span> NewsCoop <span class="fas fa-kiwi-bird"></span></h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Welcome</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
+            <div id="logoSec" class="col-sm-6">
+              <img src="img/main.jpg" alt="logo img">
+            </div>
+        </div>
+
+        <div id="gray" class="col-sm-6">
+          <h2>Posts</h2>
+          <ul class="messages">
+          <% for(var i=0; i<messages.length; i++) {%>
+            <li class="message">
+              <h4>
+                <span><i class="fas fa-caret-square-up" aria-hidden="true"></i></span>
+                <span><%= messages[i].thumbCount %></span>
+                <span><i class="fas fa-caret-square-down" aria-hidden="true"></i></span>
+                <span><%= messages[i].headline %></span>
+              </h4>
+              <a href="<%= messages[i].url %>"><%= messages[i].url %></a><br>
+              <span><%= messages[i].name %></span>
+              <span><i class="far fa-trash-alt" aria-hidden="true"></i></span>
+            </li>
+          <% } %>
+          </ul>
+
+<!-- HEADLINE INPUT IS NOT YET LINKED -->
+          <h2>Add a Story</h2>
+        <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <label for="headline">Headline</label>
+            <input type="text" placeholder="Martian Water Suggests Life on the Planet" name="headline"><br>
+
+            <label for="url">URL</label>
+            <input type="text" placeholder="https://samplenews.com" name="url"><br>
+
+            <label for="name">Poster</label>
+            <input type="text" placeholder="NewsMan2020" name="name">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
